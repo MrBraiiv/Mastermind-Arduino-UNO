@@ -1,0 +1,18 @@
+# Tooling caches:
+.cache/
+.ccls-cache/
+compile_commands.json
+
+# vim
+*.swp
+*.swo
+*.~ 
+
+# Claude code
+.claude/
+CLAUDE.md
+claude.md
+
+# OS
+.DS_Store
+Thumbs.db
