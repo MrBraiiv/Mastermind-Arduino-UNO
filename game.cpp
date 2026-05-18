@@ -3,7 +3,8 @@
 #include "headers.h"
 #include "game.h"
 #include "rgbLed.h"
-#include "buzzer.h"
+#include "sound.h"
+#include "servo.h"
 
 static byte symbolIndex(char c) { // to be used as indexing for code chars
     return c - 'A';
@@ -63,6 +64,7 @@ void gameSubmitGuess(GameState *gs) {
     if (exacts == 4) {
         gs->state = WIN;
         winSound();
+        winFlag();
     } else if (gs->count == 0) {
         gs->state = LOSE;
         loseSound();
@@ -80,4 +82,9 @@ void gameInit(GameState *gs) {
     gs->state = PLAY;
     gs->historyLine = 0;
     handleRGB(gs);
+}
+
+void setupInit() {
+    setupServo();
+    setupPins();
 }

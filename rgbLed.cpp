@@ -1,7 +1,13 @@
 #include <Arduino.h>
 #include "headers.h"
 
-static const byte redPin = 3, greenPin = 5, bluePin = 6;
+const byte redPin = 3, greenPin = 5, bluePin = 6;
+
+void setupPins() {
+    pinMode(redPin, OUTPUT);
+    pinMode(greenPin, OUTPUT);
+    pinMode(bluePin, OUTPUT);
+}
 
 static void setColor(byte r, byte g, byte b) {
     analogWrite(redPin, r);

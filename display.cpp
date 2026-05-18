@@ -3,8 +3,9 @@
 #include <LiquidCrystal_I2C.h>
 #include "headers.h"
 #include "display.h"
+#include "ldr.h"
 
-static LiquidCrystal_I2C lcd(0x27, 16, 2);
+static const LiquidCrystal_I2C lcd(0x27, 16, 2);
 
 static void updateFeedback(char *row0, char *code, byte exact, byte misp);
 static void showHints(char *row1);
@@ -14,7 +15,12 @@ static void cursorAnimation();
 void displayInit() {
     Wire.begin();
     lcd.init();
-    lcd.backlight();
+//    lcd.backlight();
+}
+
+void displaySetBacklight() {
+    if (lightState()) lcd.backlight();
+    else lcd.noBacklight();
 }
 
 void render(GameState *gs) {
@@ -72,18 +78,9 @@ static void displayScreen(char *row0, char *row1) {
 }
 
 void cursorDisplay(Mode state) {
-//    if (state == PLAY) cursorAnimation();
-//    else lcd.noBlink();
     if (state == PLAY) lcd.blink();
     else lcd.noBlink();
 }
 
 static unsigned long last_blink = 0;
 static bool swap = true;
-// static void cursorAnimation() {
-//     if (millis() - last_blink >= 500) {
-//         if (swap) lcd.cursor(); else lcd.noCursor();
-//         last_blink = millis();
-//         swap = !(swap);
-//     }
-// }

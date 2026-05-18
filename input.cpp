@@ -3,7 +3,7 @@
 #include "headers.h"
 #include "input.h"
 #include "game.h"
-#include "buzzer.h"
+#include "sound.h"
 
 void debugDumpState(GameState *gs) {
     Serial.println(F("--- GameState ---"));
@@ -38,7 +38,7 @@ static char keymap[ROWS][COLS] = {
     { 'K', 'X', 'L', 'R' }, // K = OK, X = Exit, L = Left, R = Right
 };
 
-static byte rowPins[ROWS] = { 11, 10, 9};
+static byte rowPins[ROWS] = { 12, 10, 9};
 static byte colPins[COLS] = { 8, 7, 4, 2 };
 
 static Keypad kpad = Keypad(makeKeymap(keymap), rowPins, colPins, ROWS, COLS);

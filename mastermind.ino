@@ -9,6 +9,7 @@ GameState gs;
 void setup() {
     Serial.begin(9600);
     randomSeed(analogRead(A0));
+    setupInit();
     displayInit();
     gameInit(&gs);
     render(&gs);
@@ -17,4 +18,6 @@ void loop() {
     if(inputPoll(&gs)) render(&gs);
     cursorDisplay(gs.state);
     rgbTick(&gs);
+    displaySetBacklight();
+
 }
