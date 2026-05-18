@@ -3,6 +3,7 @@
 #include "headers.h"
 
 void displayInit();
+void displaySetBacklight();
 void render(GameState *gs);
 void cursorDisplay(Mode status);
 #endif

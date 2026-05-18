@@ -5,7 +5,7 @@
 #include "display.h"
 #include "ldr.h"
 
-static const LiquidCrystal_I2C lcd(0x27, 16, 2);
+static LiquidCrystal_I2C lcd(0x27, 16, 2);
 
 static void updateFeedback(char *row0, char *code, byte exact, byte misp);
 static void showHints(char *row1);

@@ -16,7 +16,7 @@ static const unsigned int NOTE_C6  = 1047;
 static const unsigned int NOTE_D6  = 1175;
 static const unsigned int NOTE_G6  = 1568;
 
-unsigned int getFrequency() {
+static unsigned int getFrequency() {
     int raw = analogRead(POT_PIN);
     if (raw < 10) return 0;
     return map(raw, 10, 1023, 200, 2000);

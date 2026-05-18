@@ -25,9 +25,6 @@ void debugDumpState(GameState *gs) {
     Serial.println();
 }
 
-void pK(char *str) {
-    Serial.print(str);
-}
 
 static const byte ROWS = 3;
 static const byte COLS = 4;

@@ -3,9 +3,11 @@
 #include "Wire.h"
 
 const byte ldrPin = A2;
-const int range = 650;
-extern LiquidCrystal_I2C lcd;
 
 bool lightState() {
-    return analogRead(ldrPin) < range;
+    static bool currentlyOn = true;
+    int v = analogRead(ldrPin);
+    if (currentlyOn && v > 750) currentlyOn = false;
+    else if (!currentlyOn && v < 550) currentlyOn = true;
+    return currentlyOn;
 }

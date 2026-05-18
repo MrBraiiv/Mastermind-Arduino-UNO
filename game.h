@@ -4,7 +4,6 @@
 
 void gameInit(GameState *gs);
 void gameSubmitGuess(GameState *gs);
-void displaySetBacklight();
 void setupInit();
 
 #endif

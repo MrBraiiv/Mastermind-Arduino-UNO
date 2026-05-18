@@ -1,6 +1,5 @@
-#ifndef BUZZER2_H
-#define BUZZER2_H
-unsigned int getFrequency();
+#ifndef SOUND_H
+#define SOUND_H
 void clickSound();
 void winSound();
 void loseSound();

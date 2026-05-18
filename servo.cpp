@@ -1,7 +1,7 @@
 #include <Arduino.h>
 #include "servo.h"
 #include <Servo.h>
-const Servo servo;
+Servo servo;
 
 void setupServo() {
     servo.attach(11, 544, 2400);   
