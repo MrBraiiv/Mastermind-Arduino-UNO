@@ -1,6 +1,7 @@
 #include <string.h>
 #include <Arduino.h>
 #include "headers.h"
+#include "display.h"
 #include "game.h"
 #include "rgbLed.h"
 #include "sound.h"
@@ -63,6 +64,7 @@ void gameSubmitGuess(GameState *gs) {
 
     if (exacts == 4) {
         gs->state = WIN;
+        render(gs);
         winSound();
         winFlag();
     } else if (gs->count == 0) {

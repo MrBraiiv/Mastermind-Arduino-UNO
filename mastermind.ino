@@ -19,5 +19,4 @@ void loop() {
     cursorDisplay(gs.state);
     rgbTick(&gs);
     displaySetBacklight();
-
 }

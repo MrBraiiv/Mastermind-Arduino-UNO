@@ -5,25 +5,26 @@
 #include "game.h"
 #include "sound.h"
 
-void debugDumpState(GameState *gs) {
-    Serial.println(F("--- GameState ---"));
-    Serial.print(F("state       = ")); Serial.println(gs->state);
-    Serial.print(F("turn        = ")); Serial.println(gs->turn);
-    Serial.print(F("count       = ")); Serial.println(gs->count);
-    Serial.print(F("curs        = ")); Serial.println(gs->curs);
-    Serial.print(F("historyLine = ")); Serial.println(gs->historyLine);
-    Serial.print(F("guessCode   = [")); Serial.print(gs->guessCode); Serial.println(F("]"));
-    Serial.print(F("secretCode  = [")); Serial.print(gs->secretCode); Serial.println(F("]"));
-    Serial.println(F("history:"));
-    for (byte t = 0; t < gs->turn; t++) {
-        Serial.print(F("  ["));
-        Serial.print(t); Serial.print(F("] "));
-        for (byte i = 0; i < 4; i++) Serial.print(gs->historyCode[t][i]);
-        Serial.print(F("  E=")); Serial.print(gs->historyExact[t]);
-        Serial.print(F(" M=")); Serial.println(gs->historyMisp[t]);
-    }
-    Serial.println();
-}
+// Debug function:
+// void debugDumpState(GameState *gs) {
+//     Serial.println(F("--- GameState ---"));
+//     Serial.print(F("state       = ")); Serial.println(gs->state);
+//     Serial.print(F("turn        = ")); Serial.println(gs->turn);
+//     Serial.print(F("count       = ")); Serial.println(gs->count);
+//     Serial.print(F("curs        = ")); Serial.println(gs->curs);
+//     Serial.print(F("historyLine = ")); Serial.println(gs->historyLine);
+//     Serial.print(F("guessCode   = [")); Serial.print(gs->guessCode); Serial.println(F("]"));
+//     Serial.print(F("secretCode  = [")); Serial.print(gs->secretCode); Serial.println(F("]"));
+//     Serial.println(F("history:"));
+//     for (byte t = 0; t < gs->turn; t++) {
+//         Serial.print(F("  ["));
+//         Serial.print(t); Serial.print(F("] "));
+//         for (byte i = 0; i < 4; i++) Serial.print(gs->historyCode[t][i]);
+//         Serial.print(F("  E=")); Serial.print(gs->historyExact[t]);
+//         Serial.print(F(" M=")); Serial.println(gs->historyMisp[t]);
+//     }
+//     Serial.println();
+// }
 
 
 static const byte ROWS = 3;
@@ -58,8 +59,8 @@ static void handleSymbolKey(GameState *gs, char sym) {
 }
 
 static void handleSubmit(GameState *gs) {
-    if (gs->state == PLAY && guessComplete(gs)) gameSubmitGuess(gs); // [game.cpp]
-    else if (gs->state == WIN || gs->state == LOSE) gameInit(gs); // [mastermind.ino]                      
+    if (gs->state == PLAY && guessComplete(gs)) gameSubmitGuess(gs);
+    else if (gs->state == WIN || gs->state == LOSE) gameInit(gs);
 }
 
 
@@ -119,8 +120,7 @@ bool inputPoll(GameState *gs) {
 
         default: break;
     }
-    // TODO: delete after test
-    debugDumpState(gs);
+// debug test:    debugDumpState(gs);
     return 1;
 
 }

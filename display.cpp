@@ -15,7 +15,6 @@ static void cursorAnimation();
 void displayInit() {
     Wire.begin();
     lcd.init();
-//    lcd.backlight();
 }
 
 void displaySetBacklight() {
